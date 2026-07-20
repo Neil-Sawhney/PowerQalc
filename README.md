@@ -16,6 +16,10 @@ It also ships with a **huge library of built-in physical, chemical, and mathemat
 - Calculation history
 - Copy results to the clipboard
 - Variables and custom functions can be saved and used
+- Built-in constants: Hundreds of physical, chemical, and mathematical constants — use them by name with automatic units. Examples: FineStructure, planck to eV s, proton_mass to MeV/c^2, PlanckLength to nm, k_B to J/K, SpeedOfLight to mph.
+- Session memory: ans() reuses the previous result; variables persist for the session. Solve equations like 10 mph * x = 20 mi to min.
+- More: algebra, calculus, currency, dates, trigonometry, percentages (240 * 15%), and simple conversions like 100 miles to km.
+- For a complete list of features visit https://qalculate.github.io/manual/qalc.html
 
 ## Example expressions
 
