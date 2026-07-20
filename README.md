@@ -13,13 +13,9 @@ It also ships with a **huge library of built-in physical, chemical, and mathemat
 
 ## Features
 
-- Live evaluation as you type (with debounce); `ans()` and variables persist for the session
-- **Usage & help** appears once in history (scrolls down as you save results); remove it like any other entry
-- Calculation history when you copy (Enter) or save (Ctrl+Enter) — not on every keystroke
+- Calculation history
 - Copy results to the clipboard
-- Bundled `qalc` runtime — works out of the box, no separate Qalculate install
-- Configurable `qalc` path override in extension settings
-- Extension settings page in Command Palette
+- Variables and custom functions can be saved and used
 
 ## Example expressions
 
