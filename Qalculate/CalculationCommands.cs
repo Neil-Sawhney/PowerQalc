@@ -43,9 +43,9 @@ internal sealed partial class SaveCalculationCommand : InvokableCommand
     private readonly SettingsManager _settings;
     private readonly string _query;
     private readonly string _result;
-    private readonly Action _showHistory;
+    private readonly Action? _showHistory;
 
-    public SaveCalculationCommand(SettingsManager settings, string query, string result, Action showHistory)
+    public SaveCalculationCommand(SettingsManager settings, string query, string result, Action? showHistory)
     {
         _settings = settings;
         _query = query;
@@ -64,7 +64,7 @@ internal sealed partial class SaveCalculationCommand : InvokableCommand
         }
 
         _settings.History.Add(_query, _result);
-        _showHistory();
+        _showHistory?.Invoke();
         new ToastStatusMessage("Saved to history").Show();
         return CommandResult.KeepOpen();
     }

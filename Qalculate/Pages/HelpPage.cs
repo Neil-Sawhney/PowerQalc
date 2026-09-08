@@ -41,9 +41,9 @@ internal sealed partial class HelpPage : ContentPage
             """
             # PowerQalc
 
-            A calculator in Command Palette. Type an expression and the answer updates as you type.
+            A calculator in Command Palette. Type an expression in the main search box — PowerQalc appears as a fallback result, so you do not need to open the extension first. Open **PowerQalc** for history, `ans()`, and variables.
 
-            **Enter** copies the result. **Ctrl+Enter** saves it to history without copying. Clear the search box to see past results.
+            **Enter** copies the result. **Ctrl+Enter** saves it to history without copying. On the PowerQalc page, clear the search box to see past results.
             """),
         new MarkdownContent(
             """

@@ -13,6 +13,7 @@ It also ships with a **huge library of built-in physical, chemical, and mathemat
 
 ## Features
 
+- Fallback results in Command Palette's global search — type `2+2` or `5 miles + 10 km` without opening the extension; Enter copies the answer
 - Live evaluation as you type (with debounce); `ans()` and variables persist for the session
 - **Usage & help** appears once in history (scrolls down as you save results); remove it like any other entry
 - Calculation history when you copy (Enter) or save (Ctrl+Enter) — not on every keystroke
@@ -49,7 +50,9 @@ Install from the [Microsoft Store](https://apps.microsoft.com/detail/9MZR396NKKG
 
 After installing or updating, run **Reload** in Command Palette if the extension does not appear right away.
 
-For quicker access, assign a short alias in **PowerToys → Command Palette → Extensions → PowerQalc** — for example, `q` lets you open it with `q` then Space in Command Palette.
+Type an expression in Command Palette's main search box (for example `2+2` or `100 miles to km`) and PowerQalc appears as a **fallback** result — Enter copies the answer. You can still open **PowerQalc** for history and session variables. If the fallback does not show, enable it under **PowerToys → Command Palette → Extensions → PowerQalc**.
+
+For quicker access to the full page, assign a short alias in that same Extensions page — for example, `q` lets you open it with `q` then Space.
 
 ## License
 

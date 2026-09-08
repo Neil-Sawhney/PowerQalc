@@ -11,6 +11,7 @@ namespace Qalculate;
 public partial class QalculateCommandsProvider : CommandProvider
 {
     private readonly ICommandItem[] _commands;
+    private readonly IFallbackCommandItem[] _fallbacks;
     private readonly SettingsManager _settings = new();
 
     public QalculateCommandsProvider()
@@ -32,9 +33,12 @@ public partial class QalculateCommandsProvider : CommandProvider
                 Subtitle = "Conversions, percentages, and tips",
             },
         ];
+        _fallbacks = [new FallbackQalcItem(_settings, page)];
     }
 
     public override ICommandItem[] TopLevelCommands() => _commands;
+
+    public override IFallbackCommandItem[] FallbackCommands() => _fallbacks;
 
     public override void Dispose()
     {
