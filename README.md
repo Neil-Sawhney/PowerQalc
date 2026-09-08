@@ -13,14 +13,16 @@ It also ships with a **huge library of built-in physical, chemical, and mathemat
 
 ## Features
 
-- Fallback results in Command Palette's global search — type `2+2` or `5 miles + 10 km` without opening the extension; Enter copies the answer
+- Fallback results in Command Palette's global search — type `2+2` or `5 miles + 10 km` without opening the extension
 - Live evaluation as you type (with debounce); `ans()` and variables persist for the session
 - **Usage & help** appears once in history (scrolls down as you save results); remove it like any other entry
 - Calculation history when you copy (Enter) or save (Ctrl+Enter) — not on every keystroke
 - Copy results to the clipboard
-- Bundled `qalc` runtime — works out of the box, no separate Qalculate install
-- Configurable `qalc` path override in extension settings
-- Extension settings page in Command Palette
+- Variables and custom functions can be saved and used
+- Built-in constants: Hundreds of physical, chemical, and mathematical constants — use them by name with automatic units. Examples: FineStructure, planck to eV s, proton_mass to MeV/c^2, PlanckLength to nm, k_B to J/K, SpeedOfLight to mph.
+- Session memory: ans() reuses the previous result; variables persist for the session. Solve equations like 10 mph * x = 20 mi to min.
+- More: algebra, calculus, currency, dates, trigonometry, percentages (240 * 15%), and simple conversions like 100 miles to km.
+- For a complete list of features visit https://qalculate.github.io/manual/qalc.html
 
 ## Example expressions
 
