@@ -11,7 +11,7 @@
   <Identity
     Name="neilsawhney.PowerQalc"
     Publisher="CN=1E94D2E3-4049-4125-8B93-167073ACFAF4"
-    Version="1.0.2.0" />
+    Version="1.0.3.0" />
 
   <Properties>
     <DisplayName>PowerQalc</DisplayName>

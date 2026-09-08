@@ -16,7 +16,7 @@
     <EnableMsixTooling>true</EnableMsixTooling>
     <AppxPackageIdentityName>neilsawhney.PowerQalc</AppxPackageIdentityName>
     <AppxPackagePublisher>CN=1E94D2E3-4049-4125-8B93-167073ACFAF4</AppxPackagePublisher>
-    <AppxPackageVersion>1.0.2.0</AppxPackageVersion>
+    <AppxPackageVersion>1.0.3.0</AppxPackageVersion>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
     <PackageCertificateKeyFile>Qalculate_TemporaryKey.pfx</PackageCertificateKeyFile>
     <PackageCertificatePassword>qalculate</PackageCertificatePassword>

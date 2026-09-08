@@ -37,4 +37,4 @@ Write-Host ""
 Write-Host "This was a local test install (Debug, dev-signed)." -ForegroundColor DarkGray
 Write-Host "For Store upload, run:" -ForegroundColor Yellow
 Write-Host "  .\build.ps1" -ForegroundColor Yellow
-Write-Host "Then upload Qalculate\AppPackages\PowerQalc_1.0.2.0.msixbundle to Partner Center."
+Write-Host "Then upload Qalculate\AppPackages\PowerQalc_1.0.3.0.msixbundle to Partner Center."
