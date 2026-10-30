@@ -5,7 +5,6 @@
 using System;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 using Windows.System;
@@ -40,31 +39,31 @@ internal sealed partial class FallbackQalcItem : FallbackCommandItem
         Icon = AppIcon;
     }
 
+    // CmdPal calls this on a background thread and only refreshes the list if Title
+    // changed by the time it returns, so the result must be ready before returning.
     public override void UpdateQuery(string query)
     {
         var version = Interlocked.Increment(ref _queryVersion);
-        _evaluationCts?.Cancel();
+        var evaluationCts = new CancellationTokenSource();
+        Interlocked.Exchange(ref _evaluationCts, evaluationCts)?.Cancel();
 
         if (!LooksLikeExpression(query) || LooksIncomplete(query))
         {
-            Hide();
+            HideIfCurrent(version);
             return;
         }
 
-        _evaluationCts = new CancellationTokenSource();
-        _ = EvaluateAsync(query, version, _evaluationCts.Token);
+        Evaluate(query, version, evaluationCts.Token);
     }
 
-    private async Task EvaluateAsync(string query, int version, CancellationToken cancellationToken)
+    private void Evaluate(string query, int version, CancellationToken cancellationToken)
     {
         try
         {
-            await Task.Delay(300, cancellationToken).ConfigureAwait(false);
-
-            var result = await QalculateService.EvaluateAsync(
+            var result = QalculateService.EvaluateAsync(
                 query,
                 _settings.Session,
-                cancellationToken).ConfigureAwait(false);
+                cancellationToken).GetAwaiter().GetResult();
 
             if (!IsCurrentQuery(version, cancellationToken))
             {
@@ -118,17 +117,6 @@ internal sealed partial class FallbackQalcItem : FallbackCommandItem
                         true, false, false, false, (int)VirtualKey.Enter),
                 },
             ];
-        }
-    }
-
-    private void Hide()
-    {
-        lock (_updateLock)
-        {
-            Command = _noOpCommand;
-            Title = string.Empty;
-            Subtitle = string.Empty;
-            MoreCommands = [];
         }
     }
 

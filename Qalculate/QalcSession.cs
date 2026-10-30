@@ -43,13 +43,20 @@ internal sealed partial class QalcSession : IDisposable
         await _gate.WaitAsync(cancellationToken).ConfigureAwait(false);
         try
         {
-            using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-            timeoutCts.CancelAfter(TimeoutMilliseconds);
+            cancellationToken.ThrowIfCancellationRequested();
+
+            // Only the timeout may interrupt a request: abandoning a read would leave its
+            // answer in the pipe, so it would cost a qalc restart on every keystroke.
+            using var timeoutCts = new CancellationTokenSource(TimeoutMilliseconds);
 
             EnsureStarted(timeoutCts.Token);
             return await EvaluateCoreAsync(expression.Trim(), timeoutCts.Token).ConfigureAwait(false);
         }
-        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+        catch (OperationCanceledException ex) when (ex.CancellationToken == cancellationToken)
+        {
+            throw;
+        }
+        catch (OperationCanceledException)
         {
             Restart();
             return new QalculateResult(false, string.Empty, "Calculation timed out.");
